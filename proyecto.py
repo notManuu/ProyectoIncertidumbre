@@ -429,7 +429,7 @@ if st.button("🚀 EJECUTAR ANÁLISIS COMPLETO (GUM + MONTE CARLO)", type="prima
         # Overlay Normal GUM
         x_plot = np.linspace(y_gum - 4*u_c_gum, y_gum + 4*u_c_gum, 200)
         ax_hist.plot(x_plot, stats.norm.pdf(x_plot, y_gum, u_c_gum), 'r--', lw=2, label="GUM (Teórica)")
-        ax_hist.set_title("Histograma de estimaciones (N=1,000,000)")
+        ax_hist.set_title(f"Histograma de estimaciones (N={n_mc_sidebar:,})")
         ax_hist.legend()
         st.pyplot(fig_hist)
 
@@ -458,3 +458,4 @@ if st.button("🚀 EJECUTAR ANÁLISIS COMPLETO (GUM + MONTE CARLO)", type="prima
         file_name=f"Reporte_Metrologia_{st.session_state.current_case.replace(':', '').replace(' ', '_')}.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+
