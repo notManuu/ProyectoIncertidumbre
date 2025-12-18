@@ -357,7 +357,7 @@ if st.button("🚀 EJECUTAR ANÁLISIS COMPLETO (GUM + MONTE CARLO)", type="prima
 
     # 3. BUCLE DE CONVERGENCIA MONTE CARLO (N variable)
     # Valores de N según el PDF 
-    n_values = [100, 1000, 10000, 100000, 1000000]
+    n_values = [n for n in [100, 1000, 10000, 100000, 1000000] if n <= n_mc_sidebar]
     mc_results = []
     y_mc_final_dist = None # Guardamos la distribución de N=1,000,000 para el histograma
 
@@ -385,7 +385,7 @@ if st.button("🚀 EJECUTAR ANÁLISIS COMPLETO (GUM + MONTE CARLO)", type="prima
         U_exp_mc = (high - low) / 2
         
         mc_results.append({"N": N, "Media": y_mean, "U_exp": U_exp_mc})
-        if N == 1000000: y_mc_final_dist = y_samples
+        if N == n_mc_sidebar: y_mc_final_dist = y_samples
         progress_bar.progress((i + 1) / len(n_values))
 
     # --- 9. DESPLIEGUE DE RESULTADOS ---
